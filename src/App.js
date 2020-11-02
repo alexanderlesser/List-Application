@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ListContextProvider from "./contexts/ListContext";
+import List from "./components/List";
+import GlobalStyles, {
+  Wrapper,
+  ListBox,
+  AddListBox,
+  LeftBox,
+  HeaderTitle,
+} from "./GlobalStyles";
+import AddList from "./components/AddList";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <Wrapper>
+        <ListContextProvider>
+          <LeftBox>
+            <HeaderTitle>
+              <h1>Todo-List</h1>
+            </HeaderTitle>
+            <AddListBox>
+              <AddList />
+            </AddListBox>
+          </LeftBox>
+          <ListBox>
+            <List />
+          </ListBox>
+        </ListContextProvider>
+      </Wrapper>
+    </>
   );
-}
+};
 
 export default App;
